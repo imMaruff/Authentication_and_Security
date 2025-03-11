@@ -4,8 +4,10 @@ const express = require("express");
 const ejs = require("ejs");
 const bodyparser = require("body-parser");
 const mongoose = require("mongoose");
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 // const encryption = require("mongoose-encryption");
-const md5 = require("md5");
+// const md5 = require("md5");
 
 
 const app = express();
@@ -31,44 +33,48 @@ app.get("/",function(req,res){
 
 app.get("/login",function(req,res){
     res.render("login");
-});
-
+}); 
 app.get("/register",function(req,res){
     res.render("register");
 });
 
 app.post("/register",function(req,res){
 
-    const newUser = new User({
-        email:req.body.username,
-        password:md5(req.body.password)
-    });
 
-    newUser.save()
-    .then(()=>{
-        res.render("secrets")
-    })
-    .catch((error)=>{
-        console.log(error);
-        
-    })
+    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+        const newUser = new User({
+            email:req.body.username,
+            password:hash
+        });
+        newUser.save()
+        .then(()=>{
+            res.render("secrets")
+        })
+        .catch((error)=>{
+            console.log(error);
+            
+        })
+    });
 });
 
 
 app.post("/login",async function (req,res){
     const username = req.body.username;
-    const password = md5(req.body.password);    
+    const password = req.body.password;    
     try{
         const user = await User.findOne({email:username}); 
         if(!user){
             return res.send("No such user exist!")
         }
-        
-        if(user.password === password){
-            return res.render("secrets");
-        }
-        res.send("Invalid password");
-            
+        bcrypt.compare(password, user.password, function(err, result) {
+            if(result === true){
+                res.render("secrets");
+            }
+            else{
+
+                res.send("Invalid password");
+            }
+        }); 
     }
     catch(error){
         res.send(error)
