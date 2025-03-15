@@ -68,8 +68,8 @@ passport.serializeUser(function(user, done) {
   console.log("CLIENT_ID:", process.env.CLIENT_ID);
 
 passport.use(new GoogleStrategy({
-    clientID: "879134153860-cn9fp9322hfajg394kivqulku6iht6s5.apps.googleusercontent.com",
-    clientSecret: "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",
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/secrets",
     // userProfileURL: "http://www.googleapis.com/oauth2/v3/userinfo"
   },

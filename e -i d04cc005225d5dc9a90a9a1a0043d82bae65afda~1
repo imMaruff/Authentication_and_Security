@@ -1,0 +1,35 @@
+[33mcommit d04cc005225d5dc9a90a9a1a0043d82bae65afda[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Maruf <maruf.khann931@gmail.com>
+Date:   Sat Mar 15 12:48:38 2025 +0530
+
+    Authentication using OAUTH
+
+[33mcommit bc6930091ab799dfb86545281149f24b368e5d12[m
+Author: Maruf <maruf.khann931@gmail.com>
+Date:   Tue Mar 11 16:49:06 2025 +0530
+
+    cookies and sessions
+
+[33mcommit ba821b826bdf23169711ded68fc146a186669f4c[m
+Author: Maruf <maruf.khann931@gmail.com>
+Date:   Tue Mar 11 12:53:06 2025 +0530
+
+    Hashing and salting using bcrypt
+
+[33mcommit 3d12eb226e0c1e6aa24218a3d1e5c4a26396f095[m
+Author: Maruf <maruf.khann931@gmail.com>
+Date:   Tue Mar 11 11:42:49 2025 +0530
+
+    Securing password using Hashing
+
+[33mcommit 965d81f25405f41fc76f5b9d74385d192c68c09b[m
+Author: Maruf <maruf.khann931@gmail.com>
+Date:   Tue Mar 11 11:21:45 2025 +0530
+
+    Add Environment Variables
+
+[33mcommit c1b0b54ed0c731c57044b30cd7496d2a6d9db6d4[m
+Author: Maruf <maruf.khann931@gmail.com>
+Date:   Tue Mar 11 10:53:13 2025 +0530
+
+    done with database encryption using mongoose-encryption npm package
